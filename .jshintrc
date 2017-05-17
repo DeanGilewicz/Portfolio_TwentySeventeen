@@ -1,0 +1,12 @@
+{
+	"browser": true,
+	"devel": true, 
+	"jquery": true, 
+	"eqeqeq": true,
+	"eqnull": true,
+	"undef": true,
+	"unused": true,
+	"maxdepth": 3, 
+	"esversion": 6,
+	"strict": true 
+}
