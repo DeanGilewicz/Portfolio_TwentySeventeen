@@ -1,14 +1,44 @@
 body.index {
 
-	.container_hero {
+	.container {
 		padding-top: $spacing*10;
-		padding-bottom: $spacing*3;
+		padding-bottom: $spacing*10;
+	}
+
+	.container.hero {
+		padding-top: $spacing*20;
 		background-color: $blue;
 
 		h1 {
 			margin: 0;
 		}
 
+	}
+
+	.container.about,
+	.container.projects.two {
+		background-color: lighten($grey, 17%);
+	}
+
+	.container.projects.one,
+	.container.reach_out {
+		background-color: $white;
+	}
+
+	.container.about {
+		color: $black;
+	}
+	
+	.container.projects.one {
+		color: $orange;
+	}
+
+	.container.projects.two {
+		color: $blue;
+	}
+
+	.container.reach_out {
+		color: $green;
 	}
 
 }
