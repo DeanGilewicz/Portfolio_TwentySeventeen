@@ -4,6 +4,9 @@ $medium: 640px;
 
 $large: 1024px;
 
+$spacing: 10px;
+
+
 // Colors
 
 $black: #000000;
@@ -18,8 +21,15 @@ $orange: #FF8800;
 
 $white: #FFFFFF;
 
+
 // Typography
 
 $font_rubik: 'Rubik', sans-serif;
+
 $font_roboto_mono: 'Roboto Mono', monospace;
 
+$font_size: 16px;
+
+$link: $grey;
+
+$text: $grey;
