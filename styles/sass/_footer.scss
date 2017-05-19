@@ -2,4 +2,19 @@ footer {
 	padding-top: $spacing*5;
 	padding-bottom: $spacing*5;
 	background-color: $black;
+	text-align: center;
+
+	.columns:first-child img {
+		max-width: 46px;
+	}
+
+	.columns:nth-child(2) img {
+		max-width: 60px;
+	}
+
+	.columns:nth-child(3) img {
+		max-width: 40px;
+	}
+
+
 }

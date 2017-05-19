@@ -20,6 +20,19 @@ body.index {
 		background-color: lighten($grey, 17%);
 	}
 
+	.container.about .logos {
+		text-align: center;
+		
+		img {
+			max-width: 100px;
+		}
+
+		.columns:first-child img {
+			max-width: 220px;
+		}
+
+	}
+
 	.container.projects.one,
 	.container.reach_out {
 		background-color: $white;
@@ -40,5 +53,8 @@ body.index {
 	.container.reach_out {
 		color: $green;
 	}
+
+
+
 
 }

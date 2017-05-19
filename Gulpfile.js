@@ -13,9 +13,6 @@ var gulp = require('gulp'),
 	babel = require('gulp-babel'), 
 	uglify = require('gulp-uglify');
 
-	// data = require('./data/data.json');
-	// json data for templates - require does cache the result making it unsuitable to read/modify/read-again otherwise have to continually restart gulp to see updates to data
-
 // express server
 	// view on host computer -> localhost:4000
 	// view on mobile device -> in command line of computer run ifconfig, look for en0, en1 etc and "inet" number. Use this number plus port
@@ -24,25 +21,25 @@ var gulp = require('gulp'),
 gulp.task('express', function() {
 	var express = require('express');
 	var app = express();
-	app.use(express.static(__dirname + '/dist', {'extensions': ['html']})); // _dirname is the root - expects index.html at root - defined in dist folder
+	app.use(express.static(__dirname + '/dist', {'extensions': ['html']}));
 	app.listen(4000);
 });
 
 
 // JAVASCRIPT
 
-	// lint main js file
+	// lint js files
 
 gulp.task('jshint', function() {
-	return gulp.src('scripts/main.js')
+	return gulp.src('scripts/**/*')
 		.pipe(jshint())
 		.pipe(jshint.reporter('jshint-stylish'));
 });
 
-	// minify main.js script - place into dist folder
+	// minifies js scripts - places into dist folder
 
 gulp.task('minify-main-js', function() {
-	return gulp.src('scripts/main.js')
+	return gulp.src('scripts/**/*')
 		.pipe(sourcemaps.init())  
 		.pipe(babel({
 			presets: ['es2015']
@@ -54,7 +51,9 @@ gulp.task('minify-main-js', function() {
 			console.log(e.message);
 			return this.end();
 		}))
-		.pipe(rename('main.min.js'))
+		.pipe(rename(function(path) {
+			path.extname = '.min.js';
+		}))
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('dist/js'))
 		.pipe(livereload());
@@ -68,7 +67,7 @@ gulp.task('minify-main-js', function() {
 
 gulp.task('minify-css', function() {
 	var processors = [
-		autoprefixer({browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']}),
+		autoprefixer({browsers: ['last 4 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']}),
 		cssnano
 	];
 	return gulp.src('styles/sass/main.scss')
@@ -90,20 +89,13 @@ gulp.task('minify-css', function() {
 	// compile handlebars templates - place in dist as .html files
 
 gulp.task('handlebars', function () {
-	var data = JSON.parse(fs.readFileSync('data/data.json'));
-	// var templateData = {}, // data to pass into templates - using ./data/data.json above
+	var data = JSON.parse(fs.readFileSync('data/data.json')); // data to pass into templates
 	options = {
-		ignorePartials: true, // ignores any unknown partials. Useful if you only want to handle part of the file
-		// partials : {}, // Javascript object that will fill in partials using strings
-		batch : ['partials'] // Javascript array of filepaths to use as partials
-		// helpers : {
-		//     capitals : function(str){
-		//         return str.toUpperCase();
-		//     }
-		// } // javascript functions to stand in for helpers used in the handlebars files
+		ignorePartials: true, // ignores any unknown partials
+		batch : ['partials']
 	};
 	return gulp.src('templates/**/*.hbs')
-		.pipe(handlebars(data, options)) // using ./data/data.json file
+		.pipe(handlebars(data, options))
 		.pipe(rename(function(path) {
 			path.extname = '.html';
 		}))
@@ -112,15 +104,49 @@ gulp.task('handlebars', function () {
 });
 
 
+// ASSETS
+
+	// copy fonts folder into dist/
+
+// gulp.task('assets-fonts', function() { 
+// 	return gulp.src(['assets/fonts/*'])
+//     	.pipe(gulp.dest('dist/fonts/'));
+// });
+
+	// copy images folder into dist/
+
+gulp.task('assets-images', function() { 
+	return gulp.src(['assets/images/**/*'])
+    	.pipe(gulp.dest('dist/images/'));
+});
+
+
 // DELETE
 
-	// remove all dist files when needed
+	// delete non vendor dist files
 
-gulp.task('clean', function() {
-	del([
-		'dist'
-	]);
+gulp.task('clean-js', function() {
+	del(['dist/js/**/*', '!dist/{js/vendor,js/vendor/**/*}']);
 });
+
+	// delete minimized css dist files
+
+gulp.task('clean-css', function() {
+	del(['dist/css/**/*']);
+});
+
+	// delete images from dist
+
+gulp.task('clean-imgs', function() {
+	del(['dist/images/**/*']);
+});
+
+	// delete html files from dist
+
+gulp.task('clean-html', function() {
+	del(['dist/**/*.html']);
+});
+
 
 
 // GULP TASKS
@@ -129,22 +155,23 @@ gulp.task('clean', function() {
 
 gulp.task('watch', function() {
 	livereload.listen({ quiet: true }); // disable console log of reloaded files
-	gulp.watch(['styles/sass/**'], ['minify-css']);
-	gulp.watch(['scripts/main.js'], ['jshint', 'minify-main-js']);
-	gulp.watch(['templates/**'], ['handlebars']);
+	gulp.watch(['styles/sass/**'], ['clean-css','minify-css']);
+	gulp.watch(['scripts/**/*'], ['jshint', 'clean-js','minify-main-js']);
+	gulp.watch(['templates/**'], ['clean-html', 'handlebars']);
 	gulp.watch(['partials/*.hbs'], ['handlebars']);
 	gulp.watch(['data/data.json'], ['handlebars']);
+	gulp.watch(['assets/**/*'], ['clean-imgs', 'assets-images']);
 });
 
 	// register default gulp tasks
 
-gulp.task('default', ['express', 'watch', 'jshint', 'minify-css', 'minify-main-js', 'handlebars'], function() {
+gulp.task('default', ['express', 'watch', 'jshint', 'minify-css', 'minify-main-js', 'handlebars', 'assets-images'], function() {
 	console.log('gulp is watching and will rebuild when changes are made...');
 });
 
 	// register initial gulp tasks
 
-gulp.task('build', ['minify-css', 'minify-main-js', 'handlebars'], function() {
+gulp.task('build', ['minify-css', 'minify-main-js', 'handlebars', 'assets-images'], function() {
 	console.log('Your development environment has been set up. Run gulp to watch and build your project!');
 });
 
