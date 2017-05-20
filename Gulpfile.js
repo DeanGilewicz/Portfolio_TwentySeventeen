@@ -39,24 +39,26 @@ gulp.task('jshint', function() {
 	// minifies js scripts - places into dist folder
 
 gulp.task('minify-main-js', function() {
-	return gulp.src('scripts/**/*')
-		.pipe(sourcemaps.init())  
-		.pipe(babel({
-			presets: ['es2015']
-		}).on('error', function(e) {
-			console.log(e.message);
-			return this.end();
-		})) 
-		.pipe(uglify().on('error', function(e) {
-			console.log(e.message);
-			return this.end();
-		}))
-		.pipe(rename(function(path) {
-			path.extname = '.min.js';
-		}))
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest('dist/js'))
-		.pipe(livereload());
+	del(['dist/js/**/*', '!dist/{js/vendor,js/vendor/**/*}'], function() {
+		return gulp.src('scripts/**/*')
+			.pipe(sourcemaps.init())  
+			.pipe(babel({
+				presets: ['es2015']
+			}).on('error', function(e) {
+				console.log(e.message);
+				return this.end();
+			})) 
+			.pipe(uglify().on('error', function(e) {
+				console.log(e.message);
+				return this.end();
+			}))
+			.pipe(rename(function(path) {
+				path.extname = '.min.js';
+			}))
+			.pipe(sourcemaps.write('./'))
+			.pipe(gulp.dest('dist/js'))
+			.pipe(livereload());
+	});
 });
 
 
@@ -66,20 +68,22 @@ gulp.task('minify-main-js', function() {
 	// compile sass into css and minify - place into dist folder
 
 gulp.task('minify-css', function() {
-	var processors = [
-		autoprefixer({browsers: ['last 4 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']}),
-		cssnano
-	];
-	return gulp.src('styles/sass/main.scss')
-		.pipe(sass({ outputStyle: 'expanded' })
-			.on('error', sass.logError)
-		)
-		.pipe(sourcemaps.init())
-		.pipe(postcss(processors))
-		.pipe(rename('main.min.css'))
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest('dist/css'))
-		.pipe(livereload());
+	del(['dist/css/**/*'], function() {
+		var processors = [
+			autoprefixer({browsers: ['last 4 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']}),
+			cssnano
+		];
+		return gulp.src('styles/sass/main.scss')
+			.pipe(sass({ outputStyle: 'expanded' })
+				.on('error', sass.logError)
+			)
+			.pipe(sourcemaps.init())
+			.pipe(postcss(processors))
+			.pipe(rename('main.min.css'))
+			.pipe(sourcemaps.write('./'))
+			.pipe(gulp.dest('dist/css'))
+			.pipe(livereload());
+	});
 });
 
 
@@ -89,18 +93,20 @@ gulp.task('minify-css', function() {
 	// compile handlebars templates - place in dist as .html files
 
 gulp.task('handlebars', function () {
-	var data = JSON.parse(fs.readFileSync('data/data.json')); // data to pass into templates
-	options = {
-		ignorePartials: true, // ignores any unknown partials
-		batch : ['partials']
-	};
-	return gulp.src('templates/**/*.hbs')
-		.pipe(handlebars(data, options))
-		.pipe(rename(function(path) {
-			path.extname = '.html';
-		}))
-		.pipe(gulp.dest('dist/'))
-		.pipe(livereload())
+	del(['dist/**/*.html'], function() {
+		var data = JSON.parse(fs.readFileSync('data/data.json')); // data to pass into templates
+		options = {
+			ignorePartials: true, // ignores any unknown partials
+			batch : ['partials']
+		};
+		return gulp.src('templates/**/*.hbs')
+			.pipe(handlebars(data, options))
+			.pipe(rename(function(path) {
+				path.extname = '.html';
+			}))
+			.pipe(gulp.dest('dist/'))
+			.pipe(livereload())
+	});
 });
 
 
@@ -125,15 +131,15 @@ gulp.task('assets-images', function() {
 
 	// delete non vendor dist files
 
-gulp.task('clean-js', function() {
-	del(['dist/js/**/*', '!dist/{js/vendor,js/vendor/**/*}']);
-});
+// gulp.task('clean-js', function() {
+// 	del(['dist/js/**/*', '!dist/{js/vendor,js/vendor/**/*}']);
+// });
 
 	// delete minimized css dist files
 
-gulp.task('clean-css', function() {
-	del(['dist/css/**/*']);
-});
+// gulp.task('clean-css', function() {
+// 	del(['dist/css/**/*']);
+// });
 
 	// delete images from dist
 
@@ -143,9 +149,9 @@ gulp.task('clean-imgs', function() {
 
 	// delete html files from dist
 
-gulp.task('clean-html', function() {
-	del(['dist/**/*.html']);
-});
+// gulp.task('clean-html', function() {
+// 	del(['dist/**/*.html']);
+// });
 
 
 
@@ -155,9 +161,9 @@ gulp.task('clean-html', function() {
 
 gulp.task('watch', function() {
 	livereload.listen({ quiet: true }); // disable console log of reloaded files
-	gulp.watch(['styles/sass/**'], ['clean-css','minify-css']);
-	gulp.watch(['scripts/**/*'], ['jshint', 'clean-js','minify-main-js']);
-	gulp.watch(['templates/**'], ['clean-html', 'handlebars']);
+	gulp.watch(['styles/sass/**'], ['minify-css']);
+	gulp.watch(['scripts/**/*'], ['jshint','minify-main-js']);
+	gulp.watch(['templates/**'], ['handlebars']);
 	gulp.watch(['partials/*.hbs'], ['handlebars']);
 	gulp.watch(['data/data.json'], ['handlebars']);
 	gulp.watch(['assets/**/*'], ['clean-imgs', 'assets-images']);
