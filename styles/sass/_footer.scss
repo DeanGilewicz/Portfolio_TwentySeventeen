@@ -4,17 +4,30 @@ footer {
 	background-color: $black;
 	text-align: center;
 
-	.columns:first-child img {
+	svg {
+		height: auto;
+		fill: $grey;
+		transition: fill 0.6s ease;
+	}
+
+	a:hover svg,
+	a:active svg {
+		fill: $green;	
+	}
+
+	.columns:first-child img,
+	.columns:first-child svg {
 		max-width: 46px;
 	}
 
-	.columns:nth-child(2) img {
+	.columns:nth-child(2) img,
+	.columns:nth-child(2) svg {
 		max-width: 60px;
 	}
 
-	.columns:nth-child(3) img {
+	.columns:nth-child(3) img,
+	.columns:nth-child(3) svg {
 		max-width: 40px;
 	}
-
 
 }
