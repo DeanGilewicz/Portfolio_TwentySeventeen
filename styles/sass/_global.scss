@@ -15,6 +15,12 @@ a {
 	text-decoration: none;
 	-webkit-tap-highlight-color: rgba(0,0,0,0.3);
 	color: $link;
+	transition: color 0.6s ease;
+
+	&:hover,
+	&:active {
+		color: $green;
+	}
 }
 
 img {
