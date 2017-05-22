@@ -17,17 +17,32 @@ footer {
 
 	.columns:first-child img,
 	.columns:first-child svg {
-		max-width: 46px;
+		max-width: 36px;
+
+		@media (min-width: $medium) {
+			max-width: 46px;
+		}
+
 	}
 
 	.columns:nth-child(2) img,
 	.columns:nth-child(2) svg {
-		max-width: 60px;
+		max-width: 46px;
+
+		@media (min-width: $medium) {
+			max-width: 60px;
+		}
+
 	}
 
 	.columns:nth-child(3) img,
 	.columns:nth-child(3) svg {
-		max-width: 40px;
+		max-width: 30px;
+
+		@media (min-width: $medium) {
+			max-width: 40px;
+		}
+
 	}
 
 }

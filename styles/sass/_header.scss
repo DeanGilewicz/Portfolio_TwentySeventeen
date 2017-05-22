@@ -4,7 +4,12 @@ header {
 	background-color: $black;
 
 	nav {
-		text-align: right;
+		text-align: center;
+
+		@media (min-width: $medium) {
+			text-align: right;
+		}
+		
 	}
 
 }

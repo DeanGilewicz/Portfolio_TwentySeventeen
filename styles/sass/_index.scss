@@ -1,8 +1,13 @@
 body.index {
 
+	h1,
+	h2 {
+		margin: 0;
+	}
+
 	.container {
 		padding-top: $spacing*10;
-		padding-bottom: $spacing*14;
+		padding-bottom: $spacing*10;
 	}
 
 	.title {
@@ -11,7 +16,7 @@ body.index {
 	}
 
 	.screenshot {
-		padding-bottom: $spacing*14;
+		padding-bottom: $spacing*10;
 	}
 
 	.table {
@@ -42,42 +47,66 @@ body.index {
 
 	.container.hero {
 		position: relative;
-		padding-top: $spacing*20;
 		background-color: $blue;
 
-		h1 {
-			margin: 0;
+		@media (min-width: $medium) {
+			padding-top: $spacing*20;
 		}
 
 		.table .table_cell:first-child {
-			width: 64%;
-			vertical-align: bottom;
+			@media (min-width: $medium) {
+				width: 64%;
+				vertical-align: bottom;
+			}
 		}
 
 		.table .table_cell:last-child {
-			width: 36%;
-			vertical-align: bottom;
+			@media (min-width: $medium) {
+				width: 36%;
+				vertical-align: bottom;
+			}
 		}
 
 	}
 
 	.container_devices {
-		text-align: right;
+		margin-top: $spacing*10;
+		text-align: center;
+
+		@media (min-width: $medium) {
+			margin-top: 0;
+			text-align: right;
+		}
 		
 		svg {
 			fill: $white;
 		}
 
 		svg:first-child {
-			max-width: 32px;
+			max-width: 26px;
+
+			@media (min-width: $medium) {
+				max-width: 32px;
+			}
+
 		}
 
 		svg:nth-child(2) {
-			max-width: 54px;
+			max-width: 48px;
+
+			@media (min-width: $medium) {
+				max-width: 54px;
+			}
+
 		}
 		
 		svg:last-child {
-			max-width: 164px;
+			max-width: 140px;
+
+			@media (min-width: $medium) {
+				max-width: 164px;
+			}
+
 		}
 
 	}
@@ -97,13 +126,32 @@ body.index {
 
 		.logos {
 			text-align: center;
+
+			a {
+				display: inline-block;				
+			}
 			
 			img {
-				max-width: 100px;
+				max-width: 70px;
+
+				@media (min-width: $medium) {
+					max-width: 100px;
+				}
+
+			}
+
+			.columns:first-child a,
+			.columns:nth-child(2) a {
+				margin-bottom: $spacing*5;
 			}
 
 			.columns:first-child img {
-				max-width: 220px;
+				max-width: 180px;
+
+				@media (min-width: $medium) {
+					max-width: 220px;
+				}
+
 			}
 
 		}
@@ -111,7 +159,6 @@ body.index {
 	}
 	
 	.container.projects.one {
-		padding-bottom: $spacing*12;
 		color: $black;
 
 		h2 {
@@ -123,20 +170,56 @@ body.index {
 			margin-bottom: 0;
 			color: $blue;
 		}
+
+		.columns:nth-child(2) .container_project {
+			padding-bottom: $spacing*10;
+
+			@media (min-width: $medium) {
+				padding-bottom: 0;
+			}
+
+		}
 	}
 
 	.container.projects.two {
-		padding-top: $spacing*14;
 		color: $black;
 
 		h4 {
-			margin: 0;
+			margin-top: $spacing*3;
+			margin-bottom: 0;
 			color: $blue;
+
+			@media (min-width: $medium) {
+				margin-top: 0;
+			}
+
+		}
+
+		.screenshot:nth-of-type(2) .table .table_cell {
+			position: relative;
+
+			&:first-child {
+				top: 105px;
+
+				@media (min-width: $medium) {
+					top: 0;
+				}
+
+			}
+
+			&:last-child {
+				top: -230px;
+
+				@media (min-width: $medium) {
+					top: 0;
+				}
+
+			}
+
 		}
 	}
 
 	.container.reach_out {
-		padding-bottom: $spacing*12;
 		color: $orange;
 
 		.container_resumes {
@@ -144,7 +227,12 @@ body.index {
 		}
 
 		img {
-			max-width: 60px;
+			max-width: 40px;
+
+			@media (min-width: $medium) {
+				max-width: 60px;
+			}
+
 		}
 
 	}
