@@ -1,0 +1,21 @@
+body.fourohfour {
+	background-color: $blue;
+
+	h1 {
+		margin: 0;
+	}
+
+	.container.hero {
+		position: relative;
+		padding-top: $spacing*10;
+		padding-bottom: $spacing*10;
+		background-color: $blue;
+
+		@media (min-width: $tablet) {
+			padding-top: $spacing*20;
+			padding-bottom: $spacing*20;
+		}
+
+	}
+
+}
