@@ -115,44 +115,20 @@ gulp.task('handlebars', function () {
 	// copy fonts folder into dist/
 
 // gulp.task('assets-fonts', function() { 
-// 	return gulp.src(['assets/fonts/*'])
-//     	.pipe(gulp.dest('dist/fonts/'));
+// 	del(['dist/fonts/**/*'], function() {
+// 		return gulp.src(['assets/fonts/**/*'])
+// 	    	.pipe(gulp.dest('dist/fonts/'));
+//    });
 // });
 
 	// copy images folder into dist/
 
 gulp.task('assets-images', function() { 
-	return gulp.src(['assets/images/**/*'])
-    	.pipe(gulp.dest('dist/images/'));
+	del(['dist/images/**/*'], function() {
+		return gulp.src(['assets/images/**/*'])
+    		.pipe(gulp.dest('dist/images/'));
+	});
 });
-
-
-// DELETE
-
-	// delete non vendor dist files
-
-// gulp.task('clean-js', function() {
-// 	del(['dist/js/**/*', '!dist/{js/vendor,js/vendor/**/*}']);
-// });
-
-	// delete minimized css dist files
-
-// gulp.task('clean-css', function() {
-// 	del(['dist/css/**/*']);
-// });
-
-	// delete images from dist
-
-gulp.task('clean-imgs', function() {
-	del(['dist/images/**/*']);
-});
-
-	// delete html files from dist
-
-// gulp.task('clean-html', function() {
-// 	del(['dist/**/*.html']);
-// });
-
 
 
 // GULP TASKS
@@ -166,7 +142,7 @@ gulp.task('watch', function() {
 	gulp.watch(['templates/**'], ['handlebars']);
 	gulp.watch(['partials/*.hbs'], ['handlebars']);
 	gulp.watch(['data/data.json'], ['handlebars']);
-	gulp.watch(['assets/**/*'], ['clean-imgs', 'assets-images']);
+	gulp.watch(['assets/**/*'], ['assets-images']);
 });
 
 	// register default gulp tasks
