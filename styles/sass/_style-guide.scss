@@ -123,6 +123,7 @@ body.style_guide {
 	.container.fonts {
 		background-color: $white;
 		color: $black;
+		text-align: center;
 
 		.rubik {
 			font-family: $font_rubik;
@@ -137,6 +138,7 @@ body.style_guide {
 	.container.colours {
 		background-color: lighten($grey, 17%);
 		color: $black;
+		text-align: center;
 
 		h2 {
 			color: $blue;
@@ -171,6 +173,7 @@ body.style_guide {
 	.container.uses {
 		background-color: $white;
 		color: $black;
+		text-align: center;
 		
 		h2 {
 			color: $orange;
