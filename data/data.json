@@ -3,6 +3,10 @@
 		"meta-title": "Front End Developer Portfolio",
 		"meta-description": "Dean Gilewicz is a Front End Developer who enjoys coding responsive web apps with rich user experiences"
 	},
+	"style-guide": {
+		"meta-title": "Front End Developer Style Guide",
+		"meta-description": "The style guide for Dean Gilewicz's personal websites"
+	},
 	"404": {
 		"meta-title": "404 Error",
 		"meta-description": ""

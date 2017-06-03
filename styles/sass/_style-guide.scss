@@ -1,0 +1,184 @@
+body.style_guide {
+
+	h1,
+	h2 {
+		margin: 0;
+	}
+
+	.container {
+		padding-top: $spacing*10;
+		padding-bottom: $spacing*10;
+	}
+
+	.title {
+		text-align: center;
+		padding-bottom: $spacing*10;
+	}
+
+	.screenshot {
+		padding-bottom: $spacing*10;
+	}
+
+	.table {
+		@media (min-width: $medium) {
+			display: table;
+			width: 100%;
+		}
+
+	}
+
+	.table_cell {
+		@media (min-width: $medium) {
+			display: table-cell;
+			width: 50%;
+			vertical-align: middle;
+
+			&:first-child {
+				padding-right: .9375rem;
+			}
+
+			&:last-child {
+				padding-left: .9375rem;
+			}
+
+		}
+	}
+
+
+	.container.hero {
+		position: relative;
+		background-color: $blue;
+
+		@media (min-width: $tablet) {
+			padding-top: $spacing*20;
+			padding-bottom: $spacing*20;
+		}
+
+		.table .table_cell:first-child {
+
+			@media (min-width: $medium) {
+				vertical-align: bottom;
+			}
+
+			@media (min-width: $tablet) {
+				width: 60%;
+			}
+		}
+
+		.table .table_cell:last-child {
+
+			@media (min-width: $medium) {
+				vertical-align: bottom;
+			}
+
+			@media (min-width: $tablet) {
+				width: 40%;
+			}
+		}
+
+	}
+
+	.container_devices {
+		margin-top: $spacing*10;
+		text-align: center;
+
+		@media (min-width: $medium) {
+			margin-top: 0;
+			text-align: right;
+		}
+		
+		svg {
+			fill: $white;
+		}
+
+		svg:first-child {
+			max-width: 26px;
+
+			@media (min-width: $tablet) {
+				max-width: 32px;
+			}
+
+		}
+
+		svg:nth-child(2) {
+			max-width: 48px;
+
+			@media (min-width: $tablet) {
+				max-width: 54px;
+			}
+
+		}
+		
+		svg:last-child {
+			max-width: 140px;
+
+			@media (min-width: $tablet) {
+				max-width: 164px;
+			}
+
+		}
+
+	}
+
+	.container.fonts {
+		background-color: $white;
+		color: $black;
+
+		.rubik {
+			font-family: $font_rubik;
+		}
+
+		.roboto_mono {
+			font-family: $font_roboto_mono;
+		}
+
+	}
+
+	.container.colours {
+		background-color: lighten($grey, 17%);
+		color: $black;
+
+		h2 {
+			color: $blue;
+		}
+
+		.black {
+			color: #000000;
+		}
+
+		.blue {
+			color: #66ADEC;
+		}
+
+		.green {
+			color: #97E657;
+		}
+
+		.grey {
+			color: #CFCFCF;
+		}
+
+		.orange {
+			color: #FF8800;
+		}
+
+		.white {
+			color: #FFFFFF;
+		}
+
+	}
+
+	.container.uses {
+		background-color: $white;
+		color: $black;
+		
+		h2 {
+			color: $orange;
+		}
+
+		img {
+			max-width: 30px;
+		}
+	}
+
+}
