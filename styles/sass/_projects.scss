@@ -1,8 +1,19 @@
-body.index {
+body.projects {
 
 	h1,
-	h2 {
+	h2,
+	h4,
+	p {
 		margin: 0;
+	}
+
+	h4 {
+		font-size: $font_size*2.4;
+
+		@media (min-width: $medium) {
+			font-size: $font_size*4;
+		}
+
 	}
 
 	.container {
@@ -120,132 +131,61 @@ body.index {
 
 	}
 
-	.container.about,
-	.container.code.two {
+	.container.websites,
+	.container.applications {
 		background-color: lighten($grey, 17%);
 	}
 
-	.container.code.one,
-	.container.reach_out {
-		background-color: $white;
-	}
-
-	.container.about {
+	.container.websites {
 		color: $black;
-
-		.logos {
-			text-align: center;
-
-			a {
-				display: inline-block;				
-			}
-			
-			img {
-				max-width: 70px;
-
-				@media (min-width: $tablet) {
-					max-width: 100px;
-				}
-
-			}
-
-			.columns:first-child a,
-			.columns:nth-child(2) a {
-				margin-bottom: $spacing*5;
-			}
-
-			.columns:first-child img {
-				max-width: 180px;
-
-				@media (min-width: $tablet) {
-					max-width: 220px;
-				}
-
-			}
-
-		}
-
 	}
 	
-	.container.code.one {
+	.container.wordpress {
+		background-color: $white;
 		color: $black;
 
-		h2 {
+		h2,
+		h4 {
 			color: $blue;
 		}
+
+	}
+
+	.container.applications {
+		color: $black;
+
+		h2,
+		h4 {
+			color: $orange;
+		}
+
+	}
+
+	.container .row:last-child .container_work {
+		margin-bottom: 0;
+	}
+
+	.container_work {
+		margin-bottom: $spacing*6;
+	}
+
+	.work_icon {
+		padding-top: $spacing;
+		padding-bottom: $spacing;
 
 		h4 {
-			margin-top: $spacing*3;
-			margin-bottom: 0;
-			color: $blue;
-		}
-
-		.columns:nth-child(2) .container_code {
-			padding-bottom: $spacing*10;
-
-			@media (min-width: $medium) {
-				padding-bottom: 0;
-			}
-
+			font-weight: 900;
 		}
 	}
 
-	.container.code.two {
-		color: $black;
+	.work_description {
 
-		h4 {
-			margin-top: $spacing*3;
-			margin-bottom: 0;
-			color: $blue;
-
-			@media (min-width: $medium) {
-				margin-top: 0;
-			}
-
+		p:first-child {
+			font-weight: 900;
 		}
 
-		.screenshot:nth-of-type(2) .table .table_cell {
-			position: relative;
-
-			&:first-child {
-
-				@media (min-width: $medium) {
-					position: relative;
-					left: 50%;
-					padding-left: 0.9375rem;
-					padding-right: 0;
-				}
-
-			}
-
-			&:last-child {
-
-				@media (min-width: $medium) {
-					position: relative;
-					right: 50%;
-					padding-left: 0;
-					padding-right: 0.9375rem;
-				}
-
-			}
-
-		}
-	}
-
-	.container.reach_out {
-		color: $orange;
-
-		.container_resumes {
-			text-align: center;
-		}
-
-		img {
-			max-width: 40px;
-
-			@media (min-width: $medium) {
-				max-width: 60px;
-			}
-
+		p:nth-child(2) {
+			font-style: italic;
 		}
 
 	}

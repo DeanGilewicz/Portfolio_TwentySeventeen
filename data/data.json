@@ -7,6 +7,10 @@
 		"meta-title": "Front End Developer Style Guide",
 		"meta-description": "The style guide for Dean Gilewicz's personal websites"
 	},
+	"projects": {
+		"meta-title": "Front End Developer Projects",
+		"meta-description": "Examples of projects that Dean Gilewicz has worked on"
+	},
 	"404": {
 		"meta-title": "404 Error",
 		"meta-description": ""
