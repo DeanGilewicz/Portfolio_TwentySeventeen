@@ -89,31 +89,10 @@ body.style_guide {
 		
 		svg {
 			fill: $white;
-		}
-
-		svg:first-child {
-			max-width: 26px;
+			max-width: 56px;
 
 			@media (min-width: $tablet) {
-				max-width: 32px;
-			}
-
-		}
-
-		svg:nth-child(2) {
-			max-width: 48px;
-
-			@media (min-width: $tablet) {
-				max-width: 54px;
-			}
-
-		}
-		
-		svg:last-child {
-			max-width: 140px;
-
-			@media (min-width: $tablet) {
-				max-width: 164px;
+				max-width: 62px;
 			}
 
 		}

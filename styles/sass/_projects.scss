@@ -100,27 +100,6 @@ body.projects {
 		
 		svg {
 			fill: $white;
-		}
-
-		svg:first-child {
-			max-width: 26px;
-
-			@media (min-width: $tablet) {
-				max-width: 32px;
-			}
-
-		}
-
-		svg:nth-child(2) {
-			max-width: 48px;
-
-			@media (min-width: $tablet) {
-				max-width: 54px;
-			}
-
-		}
-		
-		svg:last-child {
 			max-width: 140px;
 
 			@media (min-width: $tablet) {
@@ -161,12 +140,23 @@ body.projects {
 
 	}
 
-	.container .row:last-child .container_work {
-		margin-bottom: 0;
-	}
-
 	.container_work {
 		margin-bottom: $spacing*6;
+	}
+
+	.container .row:last-child .container_work {
+		@media (min-width: $medium) {
+			margin-bottom: 0;
+		}
+	}
+
+	.container .row:last-child .last .container_work {
+		margin-bottom: 0;
+
+		@media (min-width: $medium) {
+			margin-bottom: $spacing*6;
+		}
+
 	}
 
 	.work_icon {
