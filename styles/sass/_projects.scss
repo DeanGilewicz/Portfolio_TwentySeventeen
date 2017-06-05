@@ -68,23 +68,27 @@ body.projects {
 		.table .table_cell:first-child {
 
 			@media (min-width: $medium) {
+				width: 55%;
 				vertical-align: bottom;
 			}
 
 			@media (min-width: $tablet) {
-				width: 60%;
+				width: 75%;
 			}
+
 		}
 
 		.table .table_cell:last-child {
 
 			@media (min-width: $medium) {
+				width: 45%;
 				vertical-align: bottom;
 			}
 
 			@media (min-width: $tablet) {
-				width: 40%;
+				width: 25%;
 			}
+
 		}
 
 	}
