@@ -1,7 +1,8 @@
 body.style_guide {
 
 	h1,
-	h2 {
+	h2,
+	p {
 		margin: 0;
 	}
 
@@ -112,6 +113,14 @@ body.style_guide {
 			font-family: $font_roboto_mono;
 		}
 
+		p {
+			margin-bottom: $spacing*6;
+		}
+
+		.row:last-child .columns p {
+			margin-bottom: 0;
+		}
+
 	}
 
 	.container.colours {
@@ -121,6 +130,24 @@ body.style_guide {
 
 		h2 {
 			color: $blue;
+		}
+
+		p {
+			margin-bottom: $spacing*6;
+
+			@media (min-width: $medium) {
+				margin-bottom: $spacing*8;
+			}
+
+		}
+
+		.row:last-child .columns p {
+			margin-bottom: 0;
+
+			@media (min-width: $medium) {
+				margin-bottom: 0;
+			}
+
 		}
 
 		.black {
@@ -160,7 +187,35 @@ body.style_guide {
 
 		img {
 			max-width: 30px;
+			margin-right: $spacing;
+
+			&.logo_tcl {
+				max-width: 60px;
+			}
+
 		}
+
+		.container_entity {
+			text-decoration: none;
+			display: inline-block;
+			margin-bottom: $spacing*6;
+			cursor: pointer;
+
+			@media (min-width: $medium) {
+				margin-bottom: $spacing*8;
+			}
+
+		}
+
+		.row:last-child .columns .container_entity {
+			margin-bottom: 0;
+			
+			@media (min-width: $medium) {
+				margin-bottom: 0;
+			}
+
+		}
+
 	}
 
 }
