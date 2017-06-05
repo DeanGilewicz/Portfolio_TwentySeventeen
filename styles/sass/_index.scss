@@ -120,17 +120,17 @@ body.index {
 
 	}
 
-	.container.about,
-	.container.code.two {
+	.container.code,
+	.container.work.two {
 		background-color: lighten($grey, 17%);
 	}
 
-	.container.code.one,
+	.container.work.one,
 	.container.reach_out {
 		background-color: $white;
 	}
 
-	.container.about {
+	.container.code {
 		color: $black;
 
 		.logos {
@@ -167,7 +167,7 @@ body.index {
 
 	}
 	
-	.container.code.one {
+	.container.work.one {
 		color: $black;
 
 		h2 {
@@ -180,7 +180,7 @@ body.index {
 			color: $blue;
 		}
 
-		.columns:nth-child(2) .container_code {
+		.columns:nth-child(2) .container_work {
 			padding-bottom: $spacing*10;
 
 			@media (min-width: $medium) {
@@ -190,7 +190,7 @@ body.index {
 		}
 	}
 
-	.container.code.two {
+	.container.work.two {
 		color: $black;
 
 		h4 {

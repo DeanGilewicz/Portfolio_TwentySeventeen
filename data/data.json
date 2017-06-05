@@ -1,15 +1,57 @@
 {
 	"home": {
 		"meta-title": "Front End Developer Portfolio",
-		"meta-description": "Dean Gilewicz is a Front End Developer who enjoys coding responsive web apps with rich user experiences"
+		"meta-description": "Dean Gilewicz is a Front End Developer who enjoys coding responsive web apps with rich user experiences",
+		"nav": {
+			"one": {
+				"link": "#code",
+				"title": "Code"
+			},
+			"two": {
+				"link": "#work",
+				"title": "Work"
+			},
+			"three": {
+				"link": "#reach-out",
+				"title": "Reach Out"
+			}
+		}
 	},
 	"style-guide": {
 		"meta-title": "Front End Developer Style Guide",
-		"meta-description": "The style guide for Dean Gilewicz's personal websites"
+		"meta-description": "The style guide for Dean Gilewicz's personal websites",
+		"nav": {
+			"one": {
+				"link": "#fonts",
+				"title": "Fonts"
+			},
+			"two": {
+				"link": "#colours",
+				"title": "Colours"
+			},
+			"three": {
+				"link": "#entities",
+				"title": "Entities"
+			}
+		}
 	},
 	"projects": {
 		"meta-title": "Front End Developer Projects",
-		"meta-description": "Examples of projects that Dean Gilewicz has worked on"
+		"meta-description": "Examples of projects that Dean Gilewicz has worked on",
+		"nav": {
+			"one": {
+				"link": "#websites",
+				"title": "Websites"
+			},
+			"two": {
+				"link": "#wordpress",
+				"title": "WordPress"
+			},
+			"three": {
+				"link": "#applications",
+				"title": "Apps"
+			}
+		}
 	},
 	"404": {
 		"meta-title": "404 Error",

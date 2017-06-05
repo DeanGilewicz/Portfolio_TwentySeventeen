@@ -6,18 +6,14 @@
 	<body class="index">
 
 		<header>
-			<nav class="row">
-				<div class="medium-6 columns nav_general">
-					{{> nav-general}}
-				</div>
-				<div class="medium-6 columns nav_specific">
-					<span><a href="#about">About</a></span>
-					<span>|</span>
-					<span><a href="#code">Code</a></span>
-					<span>|</span>
-					<span><a href="#reach-out">Reach Out</a></span>
-				</div>
-			</nav>
+			{{> nav
+				navlinkOne=home.nav.one.link
+				navTitleOne=home.nav.one.title
+				navLinkTwo=home.nav.two.link
+				navTitleTwo=home.nav.two.title
+				navLinkThree=home.nav.three.link
+				navTitleThree=home.nav.three.title
+			}}
 		</header>
 
 		<div class="container hero">
@@ -61,7 +57,7 @@
 			</div>
 		</div>
 
-		<div id="about" class="container about">
+		<div id="code" class="container code">
 			<div class="row">
 				<div class="columns title">
 					<h2>I work with a <span class="highlight">variety of technologies</span><br/>
@@ -87,14 +83,14 @@
 			</div>
 		</div>
 
-		<div id="code" class="container code one">
+		<div id="work" class="container work one">
 			<div class="row">
 				<div class="columns title">
-					<h2>A few <span class="highlight">examples of code</span><br/>
+					<h2>A few <span class="highlight">examples of work</span><br/>
 					beyond my role at <span class="highlight">a digital agency</span></h2>
 				</div>
 				<div class="medium-6 columns">
-					<div class="container_code">
+					<div class="container_work">
 						<img src="/images/screenshots/thecodelog.jpg" alt="screenshot of thecodelog" />
 						<h4>the code log</h4>
 						<p>Custom WordPress personal blog providing code notes and snippets to help reinforce the understanding of web development concepts</p>
@@ -102,7 +98,7 @@
 					</div>
 				</div>
 				<div class="medium-6 columns">
-					<div class="container_code">
+					<div class="container_work">
 						<img src="/images/screenshots/destinations-on-a-dash.jpg" alt="screenshot of destinations on a dash" />
 						<h4>destinations on a dash</h4>
 						<p>Custom WordPress blog for Destinations on a Dash, an insightful travel blog for those looking to get the most out of their trip</p>
@@ -112,7 +108,7 @@
 			</div>
 		</div>
 
-		<div class="container code two">
+		<div class="container work two">
 			<div class="row screenshot">
 				<div class="columns table">
 					<div class="table_cell">

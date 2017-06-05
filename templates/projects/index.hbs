@@ -6,18 +6,14 @@
 	<body class="projects">
 
 		<header>
-			<nav class="row">
-				<div class="medium-6 columns nav_general">
-					{{> nav-general}}
-				</div>
-				<div class="medium-6 columns nav_specific">
-					<span><a href="#websites">Websites</a></span>
-					<span>|</span>
-					<span><a href="#wordpress">WordPress</a></span>
-					<span>|</span>
-					<span><a href="#applications">Apps</a></span>
-				</div>
-			</nav>
+			{{> nav
+				navlinkOne=projects.nav.one.link
+				navTitleOne=projects.nav.one.title
+				navLinkTwo=projects.nav.two.link
+				navTitleTwo=projects.nav.two.title
+				navLinkThree=projects.nav.three.link
+				navTitleThree=projects.nav.three.title
+			}}
 		</header>
 
 		<div class="container hero">

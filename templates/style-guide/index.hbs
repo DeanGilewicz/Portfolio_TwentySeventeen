@@ -6,18 +6,14 @@
 	<body class="style_guide">
 
 		<header>
-			<nav class="row">
-				<div class="medium-6 columns nav_general">
-					{{> nav-general}}
-				</div>
-				<div class="medium-6 columns nav_specific">
-					<span><a href="#fonts">Fonts</a></span>
-					<span>|</span>
-					<span><a href="#colours">Colours</a></span>
-					<span>|</span>
-					<span><a href="#entities">Entities</a></span>
-				</div>
-			</nav>
+			{{> nav
+				navlinkOne=style-guide.nav.one.link
+				navTitleOne=style-guide.nav.one.title
+				navLinkTwo=style-guide.nav.two.link
+				navTitleTwo=style-guide.nav.two.title
+				navLinkThree=style-guide.nav.three.link
+				navTitleThree=style-guide.nav.three.title
+			}}
 		</header>
 
 		<div class="container hero">
