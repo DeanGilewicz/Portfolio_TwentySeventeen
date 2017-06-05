@@ -6,8 +6,37 @@ header {
 	nav {
 		text-align: center;
 
-		@media (min-width: $medium) {
-			text-align: right;
+		svg {
+			max-width: 40px;
+			height: auto;
+			fill: $grey;
+			transition: fill 0.6s ease;
+			vertical-align: middle;
+		}
+
+		a:hover svg,
+		a:active svg {
+			fill: $green;	
+		}
+
+		.nav_general {
+			margin-bottom: $spacing*3;
+			
+			@media (min-width: $medium) {
+				margin-bottom: 0;
+				text-align: left;
+			}
+
+			span:last-child svg {
+				max-width: 14px;
+			}
+
+		}
+
+		.nav_specific {
+			@media (min-width: $medium) {
+				text-align: right;
+			}
 		}
 		
 	}
