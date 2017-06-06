@@ -1,11 +1,13 @@
-# This tag ensures the rewrite module is loaded
-
+# this tag ensures the rewrite module is loaded
 <IfModule mod_rewrite.c>
 
   # enable the rewrite engine
   RewriteEngine On
 
-  # Set your root directory
+  # enable the `FollowSymLinks` option if it isn't already.
+  # Options +FollowSymlinks
+
+  # set your root directory
   RewriteBase /
 
   # remove the .html extension
