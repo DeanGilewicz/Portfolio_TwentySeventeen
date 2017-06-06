@@ -113,8 +113,16 @@ body.style_guide {
 			margin-bottom: $spacing*6;
 		}
 
-		.row:last-child .columns p {
+		.row:last-child .columns:last-child p {
 			margin-bottom: 0;
+		}
+
+		.row:last-child .columns p {
+			
+			@media (min-width: $medium) {
+				margin-bottom: 0;
+			}
+
 		}
 
 	}
@@ -137,9 +145,12 @@ body.style_guide {
 
 		}
 
-		.row:last-child .columns p {
+		.row:last-child .columns:last-child p {
 			margin-bottom: 0;
+		}
 
+		.row:last-child .columns p {
+			
 			@media (min-width: $medium) {
 				margin-bottom: 0;
 			}
@@ -203,8 +214,11 @@ body.style_guide {
 
 		}
 
-		.row:last-child .columns .container_entity {
+		.row:last-child .columns:last-child .container_entity {
 			margin-bottom: 0;
+		}
+
+		.row:last-child .columns .container_entity {
 			
 			@media (min-width: $medium) {
 				margin-bottom: 0;
