@@ -35,21 +35,21 @@
 			}
 		}
 	},
-	"projects": {
-		"meta-title": "Front End Developer Projects",
-		"meta-description": "Examples of projects that Dean Gilewicz has worked on",
+	"personal-projects": {
+		"meta-title": "Front End Developer Personal Projects",
+		"meta-description": "Examples of personal projects that Dean Gilewicz has worked on",
 		"nav": {
 			"one": {
-				"link": "#websites",
-				"title": "Websites"
+				"link": "#sites",
+				"title": "Sites"
 			},
 			"two": {
-				"link": "#wordpress",
-				"title": "WordPress"
-			},
-			"three": {
 				"link": "#applications",
 				"title": "Apps"
+			},
+			"three": {
+				"link": "#libraries",
+				"title": "Libraries"
 			}
 		}
 	},

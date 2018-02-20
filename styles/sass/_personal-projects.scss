@@ -1,19 +1,8 @@
-body.projects {
+body.personal-projects {
 
 	h1,
-	h2,
-	h4,
-	p {
+	h2 {
 		margin: 0;
-	}
-
-	h4 {
-		font-size: $font_size*2.4;
-
-		@media (min-width: $medium) {
-			font-size: $font_size*4;
-		}
-
 	}
 
 	.container {
@@ -21,13 +10,41 @@ body.projects {
 		padding-bottom: $spacing*10;
 	}
 
-	.title {
-		text-align: center;
-		padding-bottom: $spacing*10;
-	}
+	// .title {
+	// 	text-align: center;
+	// 	padding-bottom: $spacing*10;
+	// }
 
 	.screenshot {
 		padding-bottom: $spacing*10;
+
+		&:last-child {
+			padding-bottom: 0;
+		}
+
+		&.reverse .table .table_cell {
+			position: relative;
+
+			&:first-child {
+				@media (min-width: $medium) {
+					position: relative;
+					left: 50%;
+					padding-left: 0.9375rem;
+					padding-right: 0;
+				}
+			}
+
+			&:last-child {
+				@media (min-width: $medium) {
+					position: relative;
+					right: 50%;
+					padding-left: 0;
+					padding-right: 0.9375rem;
+				}
+			}
+
+		}
+
 	}
 
 	.table {
@@ -54,7 +71,6 @@ body.projects {
 
 		}
 	}
-
 
 	.container.hero {
 		position: relative;
@@ -114,75 +130,57 @@ body.projects {
 
 	}
 
-	.container.websites,
-	.container.applications {
+	.container.project.one {
 		background-color: lighten($grey, 17%);
+		color: $black;
+
+		h2 {
+			margin-top: $spacing*3;
+			margin-bottom: 0;
+			text-transform: uppercase;
+
+			@media (min-width: $medium) {
+				margin-top: 0;
+			}
+
+		}
+
 	}
 
-	.container.websites {
-		color: $black;
-	}
-	
-	.container.wordpress {
+	.container.project.two {
 		background-color: $white;
 		color: $black;
 
-		h2,
-		h4 {
+		h2 {
+			margin-top: $spacing*3;
+			margin-bottom: 0;
+			text-transform: uppercase;
 			color: $blue;
+
+			@media (min-width: $medium) {
+				margin-top: 0;
+			}
+
 		}
 
 	}
 
-	.container.applications {
+	.container.project.three {
+		background-color: lighten($grey, 17%);
 		color: $black;
 
-		h2,
-		h4 {
-			color: $orange;
-		}
-
-	}
-
-	.container_work {
-		margin-bottom: $spacing*6;
-	}
-
-	.container .row:last-child .container_work {
-		@media (min-width: $medium) {
+		h2 {
+			margin-top: $spacing*3;
 			margin-bottom: 0;
-		}
-	}
+			text-transform: uppercase;
+			color: $orange;
 
-	.container .row:last-child .last .container_work {
-		margin-bottom: 0;
+			@media (min-width: $medium) {
+				margin-top: 0;
+			}
 
-		@media (min-width: $medium) {
-			margin-bottom: $spacing*6;
-		}
-
-	}
-
-	.work_icon {
-		padding-top: $spacing;
-		padding-bottom: $spacing;
-
-		h4 {
-			font-weight: 900;
-		}
-	}
-
-	.work_description {
-
-		p:first-child {
-			font-weight: 900;
-		}
-
-		p:nth-child(2) {
-			font-style: italic;
 		}
 
 	}
-
 
 }
