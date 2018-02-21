@@ -27,6 +27,12 @@
   RewriteCond %{REQUEST_URI} !/$
   RewriteRule (.*) $1\.html [L]
 
+  # force https
+  RewriteCond %{SERVER_PORT} 80
+  RewriteRule ^(.*)$ https://www.deangilewicz.com/$1 [R=301,L]
+  RewriteCond %{HTTP_HOST} ^deangilewicz.com [nocase]
+  RewriteRule ^(.*) https://www.deangilewicz.com/$1 [last,redirect=301]
+
   # Customize what Apache returns to the client in case of an error.
   ErrorDocument 404 /404
 
