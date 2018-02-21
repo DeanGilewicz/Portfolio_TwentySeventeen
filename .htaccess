@@ -1,16 +1,41 @@
+# this tag ensures the rewrite module is loaded
 <IfModule mod_rewrite.c>
 
-RewriteEngine On
-RewriteBase /
-RewriteRule ^index\.html$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.html [L]
+	# enable the rewrite engine
+	RewriteEngine On
 
-#RewriteCond %{SERVER_PORT} 80
-#RewriteRule ^(.*)$ https://www.deangilewicz.com/$1 [R=301,L]
+	# enable the `FollowSymLinks` option if it isn't already.
+	# Options +FollowSymlinks
 
-#RewriteCond %{HTTP_HOST} ^deangilewicz.com [nocase]
-#RewriteRule ^(.*) https://www.deangilewicz.com/$1 [last,redirect=301]
+	# set your root directory
+	RewriteBase /
+
+	# remove the .html extension
+	RewriteCond %{THE_REQUEST} ^GET\ (.*)\.html\ HTTP
+	RewriteRule (.*)\.html$ $1 [R=301]
+
+	# remove index and reference the directory
+	RewriteRule (.*)/index$ $1/ [R=301]
+
+	# remove trailing slash if not a directory
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_URI} /$
+	RewriteRule (.*)/ $1 [R=301]
+
+	# forward request to html file, **but don't redirect (bot friendly)**
+	RewriteCond %{REQUEST_FILENAME}.html -f
+	RewriteCond %{REQUEST_URI} !/$
+	RewriteRule (.*) $1\.html [L]
+
+	# force https
+	RewriteCond %{SERVER_PORT} 80
+	RewriteRule ^(.*)$ https://www.deangilewicz.com/$1 [R=301,L]
+	RewriteCond %{HTTP_HOST} ^deangilewicz.com [nocase]
+	RewriteRule ^(.*) https://www.deangilewicz.com/$1 [last,redirect=301]
+
+	# Customize what Apache returns to the client in case of an error.
+	ErrorDocument 404 /404
 
 </IfModule>
+
+
