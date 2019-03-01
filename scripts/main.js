@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	function initSmoothScrolling() {
   
 		if( isCssSmoothSCrollSupported() ) {
-			console.log('supported');
+			// console.log('supported');
 			// document.getElementById('js-smooth-scroll').className = 'smoothScrollSupported';
 			return;
 		}
