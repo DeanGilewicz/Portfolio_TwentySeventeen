@@ -262,6 +262,19 @@ body.index {
 
 		}
 
+		a {
+			font-family: $font_rubik;
+			text-transform: uppercase;
+			font-weight: 900;
+			color: #555555;
+
+			&:hover,
+			&:active {
+				color: $green;
+			}
+
+		}
+
 	}
 
 
