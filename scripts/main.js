@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 		function end() {
 			window.scrollTo(0, start + distance);
-			
+
 			if( typeof opt.callback === 'function' ) {
 				opt.callback();
 			}
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 
 	function initSmoothScrolling() {
-  
+
 		if( isCssSmoothSCrollSupported() ) {
 			// console.log('supported');
 			// document.getElementById('js-smooth-scroll').className = 'smoothScrollSupported';

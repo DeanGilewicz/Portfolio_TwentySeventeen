@@ -9,8 +9,8 @@ var gulp = require('gulp'),
 	postcss = require('gulp-postcss'),
 	rename = require('gulp-rename'),
 	sass = require('gulp-sass'),
-	sourcemaps = require('gulp-sourcemaps'), 
-	babel = require('gulp-babel'), 
+	sourcemaps = require('gulp-sourcemaps'),
+	babel = require('gulp-babel'),
 	uglify = require('gulp-uglify');
 
 // express server
@@ -18,36 +18,36 @@ var gulp = require('gulp'),
 	// view on mobile device -> in command line of computer run ifconfig, look for en0, en1 etc and "inet" number. Use this number plus port
 	// e.g. 00.0.00.00:4000
 
-gulp.task('express', function() {
+function server() {
 	var express = require('express');
 	var app = express();
 	app.use(express.static(__dirname + '/dist', {'extensions': ['html']}));
 	app.listen(4000);
-});
+}
 
 
 // JAVASCRIPT
 
 	// lint js files
 
-gulp.task('jshint', function() {
+function jsHint() {
 	return gulp.src('scripts/**/*')
 		.pipe(jshint())
 		.pipe(jshint.reporter('jshint-stylish'));
-});
+}
 
 	// minifies js scripts - places into dist folder
 
-gulp.task('minify-main-js', function() {
-	del(['dist/js/**/*', '!dist/{js/vendor,js/vendor/**/*}'], function() {
+function minifyMainJs() {
+	return del(['dist/js/**/*', '!dist/{js/vendor,js/vendor/**/*}']).then(() => {
 		return gulp.src('scripts/**/*')
-			.pipe(sourcemaps.init())  
+			.pipe(sourcemaps.init())
 			.pipe(babel({
 				presets: ['es2015']
 			}).on('error', function(e) {
 				console.log(e.message);
 				return this.end();
-			})) 
+			}))
 			.pipe(uglify().on('error', function(e) {
 				console.log(e.message);
 				return this.end();
@@ -59,16 +59,15 @@ gulp.task('minify-main-js', function() {
 			.pipe(gulp.dest('dist/js'))
 			.pipe(livereload());
 	});
-});
-
+}
 
 
 // SASS
 
 	// compile sass into css and minify - place into dist folder
 
-gulp.task('minify-css', function() {
-	del(['dist/css/**/*'], function() {
+function minifyCss() {
+	return del(['dist/css/**/*']).then(() => {
 		var processors = [
 			autoprefixer({browsers: ['last 4 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']}),
 			cssnano
@@ -84,7 +83,7 @@ gulp.task('minify-css', function() {
 			.pipe(gulp.dest('dist/css'))
 			.pipe(livereload());
 	});
-});
+}
 
 
 // HANDLEBARS
@@ -92,8 +91,8 @@ gulp.task('minify-css', function() {
 	// make data and partials available in project
 	// compile handlebars templates - place in dist as .html files
 
-gulp.task('handlebars', function () {
-	del(['dist/**/*.html'], function() {
+function compileHtml() {
+	return del(['dist/**/*.html']).then(() => {
 		var data = JSON.parse(fs.readFileSync('data/data.json')); // data to pass into templates
 		options = {
 			ignorePartials: true, // ignores any unknown partials
@@ -107,53 +106,63 @@ gulp.task('handlebars', function () {
 			.pipe(gulp.dest('dist/'))
 			.pipe(livereload())
 	});
-});
+}
 
 
 // ASSETS
 
 	// copy fonts folder into dist/
 
-// gulp.task('assets-fonts', function() { 
-// 	del(['dist/fonts/**/*'], function() {
+// function assetsFonts() {
+// 	return del(['dist/fonts/**/*'], function() {
 // 		return gulp.src(['assets/fonts/**/*'])
 // 	    	.pipe(gulp.dest('dist/fonts/'));
 //    });
-// });
+// }
 
 	// copy images folder into dist/
 
-gulp.task('assets-images', function() { 
-	del(['dist/images/**/*'], function() {
+function assetsImages() {
+	return del(['dist/images/**/*']).then(() => {
 		return gulp.src(['assets/images/**/*'])
     		.pipe(gulp.dest('dist/images/'));
 	});
-});
+}
 
 
 // GULP TASKS
 
 	// watch directories / files and update when changes are made
 
-gulp.task('watch', function() {
+function watchFiles() {
 	livereload.listen({ quiet: true }); // disable console log of reloaded files
-	gulp.watch(['styles/sass/**'], ['minify-css']);
-	gulp.watch(['scripts/**/*'], ['jshint','minify-main-js']);
-	gulp.watch(['templates/**'], ['handlebars']);
-	gulp.watch(['partials/*.hbs'], ['handlebars']);
-	gulp.watch(['data/data.json'], ['handlebars']);
-	gulp.watch(['assets/**/*'], ['assets-images']);
-});
+	gulp.watch(['styles/sass/**'], gulp.series(['minifyCss']));
+	gulp.watch(['scripts/**/*'], gulp.series(['jsHint','minifyMainJs']));
+	gulp.watch(['templates/**'], gulp.series(['compileHtml']));
+	gulp.watch(['partials/*.hbs'], gulp.series(['compileHtml']));
+	gulp.watch(['data/data.json'], gulp.series(['compileHtml']));
+	gulp.watch(['assets/**/*'], gulp.series(['assetsImages']));
+};
 
 	// register default gulp tasks
 
-gulp.task('default', ['express', 'watch', 'jshint', 'minify-css', 'minify-main-js', 'handlebars', 'assets-images'], function() {
+exports.default = gulp.parallel(server, watchFiles, minifyCss, compileHtml, assetsImages, gulp.series(jsHint, minifyMainJs, function logMessage() {
 	console.log('gulp is watching and will rebuild when changes are made...');
-});
+	// done();
+}));
 
 	// register initial gulp tasks
 
-gulp.task('build', ['minify-css', 'minify-main-js', 'handlebars', 'assets-images'], function() {
-	console.log('Your development environment has been set up. Run gulp to watch and build your project!');
-});
+// gulp.task('build', gulp.series(['minifyCss', 'minifyMainJs', 'compileHtml', 'assetsImages']), function() {
+// 	console.log('Your development environment has been set up. Run gulp to watch and build your project!');
+// });
 
+exports.server = server;
+exports.jsHint = jsHint;
+exports.minifyMainJs = minifyMainJs;
+exports.minifyCss = minifyCss;
+exports.compileHtml = compileHtml;
+// exports.assetsFonts = assetsFonts;
+exports.assetsImages = assetsImages;
+exports.watchFiles = watchFiles;
+// exports.default = default;
