@@ -148,14 +148,11 @@ function watchFiles() {
 
 exports.default = gulp.parallel(server, watchFiles, minifyCss, compileHtml, assetsImages, gulp.series(jsHint, minifyMainJs, function logMessage() {
 	console.log('gulp is watching and will rebuild when changes are made...');
-	// done();
 }));
 
-	// register initial gulp tasks
+	// build distribution files
 
-// gulp.task('build', gulp.series(['minifyCss', 'minifyMainJs', 'compileHtml', 'assetsImages']), function() {
-// 	console.log('Your development environment has been set up. Run gulp to watch and build your project!');
-// });
+exports.build = gulp.parallel(minifyCss, minifyMainJs, compileHtml, assetsImages);
 
 exports.server = server;
 exports.jsHint = jsHint;
