@@ -14,7 +14,7 @@
 								"express": "^4.13.3",
 								"gulp": "^4.0.2",
 								"gulp-babel": "^6.1.2",
-								"gulp-compile-handlebars": "^0.5.0",
+								"gulp-compile-handlebars": "^0.6.1",
 								"gulp-jshint": "^2.1.0",
 								"gulp-livereload": "^4.0.2",
 								"gulp-postcss": "^8.0.0",
