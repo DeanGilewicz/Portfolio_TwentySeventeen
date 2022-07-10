@@ -8,7 +8,7 @@ var gulp = require("gulp"),
 	livereload = require("gulp-livereload"),
 	postcss = require("gulp-postcss"),
 	rename = require("gulp-rename"),
-	sass = require("gulp-sass"),
+	sass = require("gulp-sass")(require("sass")),
 	sourcemaps = require("gulp-sourcemaps"),
 	babel = require("gulp-babel"),
 	uglify = require("gulp-uglify");
@@ -45,7 +45,7 @@ function minifyMainJs() {
 			.pipe(sourcemaps.init())
 			.pipe(
 				babel({
-					presets: ["es2015"],
+					presets: ["@babel/preset-env"],
 				}).on("error", function (e) {
 					console.log(e.message);
 					return this.end();
@@ -74,20 +74,7 @@ function minifyMainJs() {
 
 function minifyCss() {
 	return del(["dist/css/**/*"]).then(() => {
-		var processors = [
-			autoprefixer({
-				browsers: [
-					"last 4 version",
-					"safari 5",
-					"ie 8",
-					"ie 9",
-					"opera 12.1",
-					"ios 6",
-					"android 4",
-				],
-			}),
-			cssnano,
-		];
+		var processors = [autoprefixer(), cssnano];
 		return gulp
 			.src("styles/sass/main.scss")
 			.pipe(sass({ outputStyle: "expanded" }).on("error", sass.logError))
