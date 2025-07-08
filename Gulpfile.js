@@ -130,6 +130,14 @@ function assetsImages() {
 	});
 }
 
+// copy resume folder into dist/
+
+function assetsResumes() {
+	return del(["dist/resumes/**/*"]).then(() => {
+		return gulp.src(["assets/resumes/**/*"]).pipe(gulp.dest("dist/resumes/"));
+	});
+}
+
 // GULP TASKS
 
 // watch directories / files and update when changes are made
@@ -141,7 +149,7 @@ function watchFiles() {
 	gulp.watch(["templates/**"], gulp.series(["compileHtml"]));
 	gulp.watch(["partials/*.hbs"], gulp.series(["compileHtml"]));
 	gulp.watch(["data/data.json"], gulp.series(["compileHtml"]));
-	gulp.watch(["assets/**/*"], gulp.series(["assetsImages"]));
+	gulp.watch(["assets/**/*"], gulp.series(["assetsImages", "assetsResumes"]));
 }
 
 // register default gulp tasks
@@ -152,6 +160,7 @@ exports.default = gulp.parallel(
 	minifyCss,
 	compileHtml,
 	assetsImages,
+	assetsResumes,
 	gulp.series(jsHint, minifyMainJs, function logMessage() {
 		console.log("gulp is watching and will rebuild when changes are made...");
 	})
@@ -163,7 +172,8 @@ exports.build = gulp.parallel(
 	minifyCss,
 	minifyMainJs,
 	compileHtml,
-	assetsImages
+	assetsImages,
+	assetsResumes
 );
 
 exports.server = server;
@@ -173,5 +183,6 @@ exports.minifyCss = minifyCss;
 exports.compileHtml = compileHtml;
 // exports.assetsFonts = assetsFonts;
 exports.assetsImages = assetsImages;
+exports.assetsResumes = assetsResumes;
 exports.watchFiles = watchFiles;
 // exports.default = default;
