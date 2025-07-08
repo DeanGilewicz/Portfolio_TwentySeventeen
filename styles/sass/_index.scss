@@ -81,7 +81,7 @@ body.index {
 			margin-top: 0;
 			text-align: right;
 		}
-		
+
 		svg {
 			fill: $white;
 		}
@@ -103,7 +103,7 @@ body.index {
 			}
 
 		}
-		
+
 		svg:last-child {
 			max-width: 140px;
 
@@ -131,9 +131,9 @@ body.index {
 			text-align: center;
 
 			a {
-				display: inline-block;				
+				display: inline-block;
 			}
-			
+
 			img {
 				max-width: 70px;
 
@@ -148,14 +148,14 @@ body.index {
 				margin-bottom: $spacing*5;
 			}
 
-			.columns:first-child img {
-				max-width: 180px;
+			// .columns:first-child img {
+			// 	max-width: 180px;
 
-				@media (min-width: $tablet) {
-					max-width: 220px;
-				}
+			// 	@media (min-width: $tablet) {
+			// 		max-width: 220px;
+			// 	}
 
-			}
+			// }
 
 		}
 
@@ -246,8 +246,9 @@ body.index {
 	}
 
 	.container.reach_out {
-		background-color: lighten($grey, 17%);
-		color: $blue;
+		// background-color: lighten($grey, 17%);
+		// color: $blue;
+		color: $black;
 
 		.container_resumes {
 			text-align: center;

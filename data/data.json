@@ -1,7 +1,7 @@
 {
 	"home": {
-		"meta-title": "Front End Developer Portfolio",
-		"meta-description": "Dean Gilewicz is a Front End Developer who enjoys coding responsive web apps with rich user experiences",
+		"meta-title": "Full-Stack Engineer Portfolio",
+		"meta-description": "Dean Gilewicz is a Full-Stack Engineer and Tech Lead",
 		"nav": {
 			"one": {
 				"link": "#code",
@@ -18,8 +18,8 @@
 		}
 	},
 	"style-guide": {
-		"meta-title": "Front End Developer Style Guide",
-		"meta-description": "The style guide for Dean Gilewicz's personal websites",
+		"meta-title": "Personal Project Style Guide",
+		"meta-description": "The style guide for Dean Gilewicz's personal projects",
 		"nav": {
 			"one": {
 				"link": "#fonts",
@@ -36,20 +36,20 @@
 		}
 	},
 	"personal-projects": {
-		"meta-title": "Front End Developer Personal Projects",
-		"meta-description": "Examples of personal projects that Dean Gilewicz has worked on",
+		"meta-title": "Full-Stack Engineer Personal Projects",
+		"meta-description": "Examples of personal projects that Dean Gilewicz has built so far",
 		"nav": {
 			"one": {
-				"link": "#sites",
-				"title": "Sites"
-			},
-			"two": {
 				"link": "#applications",
 				"title": "Apps"
 			},
-			"three": {
+			"two": {
 				"link": "#libraries",
 				"title": "Libraries"
+			},
+			"three": {
+				"link": "#sites",
+				"title": "Sites"
 			}
 		}
 	},
